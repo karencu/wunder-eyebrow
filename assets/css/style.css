@@ -232,7 +232,8 @@ body {
   #wrapper .strip_6 .strip_6_product3 {
     background: #7994a8; }
   #wrapper .strip_6 .color_options {
-    display: none; }
+    display: none;
+    margin: 1em auto; }
     #wrapper .strip_6 .color_options ul {
       width: 226px;
       margin: 0 auto;

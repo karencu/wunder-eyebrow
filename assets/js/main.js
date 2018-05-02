@@ -208,139 +208,155 @@ $(document).ready(function(){
 		});
 	
 
+	
+	
+	
+	
+	
+		//STRIP 7 OFFER SECTIONS DIFFERET FUNCTIONS
+		
+		
+		//Close and Reset Other offers that are not currently selected
+		function closeOtherOffer(offer){
+			
+			var num1 = 0;
+			var num2 = 0;
+			
+			
+			if(offer == 1){
+				num1= 2;
+				num2 = 3;
+				$( '.strip_6_product2' ).css('background', '#9babb9');
+				$( '.strip_6_product3' ).css('background', '#7994a8');
+			}
+			if(offer == 2){
+				num1= 1;
+				num2 = 3;
+				$( '.strip_6_product1' ).css('background', '#e3e9ec');
+				$( '.strip_6_product3' ).css('background', '#7994a8');
+			}
+			if(offer == 3){
+				num1= 1;
+				num2 = 2;
+				$( '.strip_6_product1' ).css('background', '#e3e9ec');
+				$( '.strip_6_product2' ).css('background', '#9babb9');
+			}
+
+				//slideUp the dropdown color options
+				$( '.strip_6_product'+offer+' .color_options ul.choices' ).slideUp();
+				
+				//resetOtherOffer
+				$( '.strip_6_product'+num1+' .color_options .inputColor, .strip_6_product'+num2+' .color_options .inputColor' ).val('COLOUR');
+				$('.strip_6_product'+num1+' .color_options input[name="COLOUR"], .strip_6_product'+num2+' .color_options input[name="COLOUR"]').attr('value','COLOUR');
+				
+				
+				$( '.offer'+num1+', .offer'+num2+'' ).text('CHOOSE OFFER');
+				$( '.offer'+num1+', .offer'+num2+'' ).css('background', '#fff');
+				$( '.offer'+num1+', .offer'+num2+'' ).css('color', '#30221f');
+				$( '.offer'+num1+', .offer'+num2+'' ).removeClass('addToCart');
+				$( '.strip_6_product'+num1+' .color_options, .strip_6_product'+num2+' .color_options' ).hide();
+				$( '.strip_6_product'+num1+' .color_options .placeholders, .strip_6_product'+num2+' .color_options .placeholders').css('border','0');
+				$( '.strip_6_product'+num1+' .error_msg, .strip_6_product'+num2+' .error_msg').text('');
+				
+		}
+		
+		
+		//Update the currently selected form..change button to add to cart, display color shade option, add dropdown functio to color shade options
+		//set the currently selected color shade to hidden input field
+		
+		function selectedOffer(offer){
+			
+				$( '.offer'+offer+'' ).text('ADD TO CART');
+				$( '.offer'+offer+'' ).css('background', '#3d596e');
+				$( '.offer'+offer+'' ).css('color', '#fff');
+				$( '.offer'+offer+'' ).addClass('addToCart');
+							
+				chosen =  $( '.strip_6_product'+offer+' .color_options .inputColor' ).val();
+
+				$( '.strip_6_product'+offer+'' ).css('background', '#c9baa7');
+				$( '.strip_6_product'+offer+' .color_options' ).show();
+				$( '.strip_6_product'+offer+' .color_options .placeholders' ).click(function() {
+					$( '.strip_6_product'+offer+' .color_options ul.choices' ).slideDown( "slow", function() {});
+				});
+				
+				$( '.strip_6_product'+offer+' .color_options ul.choices li' ).click(function() {
+					 $( '.strip_6_product'+offer+' .color_options .inputColor' ).val($( this ).text());
+					 $('.strip_6_product'+offer+' .color_options input[name="COLOUR"]').attr('value',$( this ).text());
+					 $( '.strip_6_product'+offer+' .color_options ul.choices' ).slideUp();
+				});
+	
+		}
+		
+		
+		//checks if user selected a color shade before adding to cart, displays error message if no color is selected, resets the form to original state if color shade is selected
+		function checkError(offer){
+
+			var chosen =  $( '.strip_6_product'+offer+' .color_options .inputColor' ).val();
+			if(chosen == 'COLOUR'){
+				$( '.strip_6_product'+offer+' .color_options .placeholders').css('border','2px solid #971602');
+				$( '.strip_6_product'+offer+' .error_msg').text('PLEASE SELECT COLOUR').css('color','#971602');
+			}
+			else{
+				$( '.strip_6_product'+offer+' .color_options .placeholders').css('border','0');
+				$( '.strip_6_product'+offer+' .error_msg').text('');
+			}
+			
+		}
+		
 		//add_to_cart
 
 		
-		$( ".strip_6_product1 .color_options .inputColor" ).val('COLOUR');
-		$( ".strip_6_product2 .color_options .inputColor" ).val('COLOUR');
-		$( ".strip_6_product3 .color_options .inputColor" ).val('COLOUR');
-
+		//choose what happens when user click on any CHOOSE OFFER button, there are 3 functions triggered.
+		//checkError();
+		//closeOtherOffer();
+		//selectedOffer();
+		
+		
+		
 		$( ".offer" ).click(function() {
 
 			
-			var chosen;
-			
+			var chosen = 'COLOUR';
+			var offer =0;
+
 			/* OFFER 1 */
-			
 			if($( this ).hasClass( "offer1" ) && $( this ).hasClass( "addToCart" )){
-				chosen =  $( ".strip_6_product1 .color_options .inputColor" ).val();
-				
-				if(chosen == 'COLOUR'){
-					$( ".strip_6_product1 .color_options .placeholders").css('border','2px solid #971602');
-					$( ".strip_6_product1 .error_msg").text('PLEASE SELECT COLOUR').css('color','#971602');
-				}
-				else{
-					$( ".strip_6_product1 .color_options .placeholders").css('border','0');
-					$( ".strip_6_product1 .error_msg").text('');
-				}
+				offer = 1;
+				checkError(offer);
 			}
-			
-		
-			if($( this ).hasClass( "offer1" ) && !$( this ).hasClass( "addToCart" )){
-				$( this ).text('ADD TO CART');
-				$( this ).css('background', '#3d596e');
-				$( this ).css('color', '#fff');
-				$( this ).addClass('addToCart');
-
-				
-				chosen =  $( ".strip_6_product1 .color_options .inputColor" ).val();
-
-				$( '.strip_6_product1' ).css('background', '#c9baa7');
-				$( ".strip_6_product1 .color_options" ).show();
-				$( ".strip_6_product1 .color_options .placeholders" ).click(function() {
-					$( ".strip_6_product1 .color_options ul.choices" ).slideToggle( "slow", function() {});
-				});
-				
-				$( ".strip_6_product1 .color_options ul.choices li" ).click(function() {
-					 $( ".strip_6_product1 .color_options .inputColor" ).val($( this ).text());
-					 $( ".strip_6_product1 .color_options ul.choices" ).hide();
-				});
-				
-					
-			}
-			
+			if($( this ).hasClass( "offer1" ) && !$( this ).hasClass( "addToCart" )){	
+				offer = 1;
+			}	
 			
 			
 			
 			
 			/* OFFER 2 */
-			
 			if($( this ).hasClass( "offer2" ) && $( this ).hasClass( "addToCart" )){
-				chosen =  $( ".strip_6_product2 .color_options .inputColor" ).val();
-				
-				if(chosen == 'COLOUR'){
-					$( ".strip_6_product2 .color_options .placeholders").css('border','2px solid #971602');
-					$( ".strip_6_product2 .error_msg").text('PLEASE SELECT COLOUR').css('color','#971602');
-				}
-				else{
-					$( ".strip_6_product2 .color_options .placeholders").css('border','0');
-					$( ".strip_6_product2 .error_msg").text('');
-				}
+				offer = 2;
+				checkError(offer);
 			}
-			
-		
 			if($( this ).hasClass( "offer2" ) && !$( this ).hasClass( "addToCart" )){
-				$( this ).text('ADD TO CART');
-				$( this ).css('background', '#3d596e');
-				$( this ).css('color', '#fff');
-				$( this ).addClass('addToCart');
-				
-				chosen =  $( ".strip_6_product2 .color_options .inputColor" ).val();
-
-				$( '.strip_6_product2' ).css('background', '#c9baa7');
-				$( ".strip_6_product2 .color_options" ).show();
-				$( ".strip_6_product2 .color_options .placeholders" ).click(function() {
-					$( ".strip_6_product2 .color_options ul.choices" ).slideToggle( "slow", function() {});
-				});
-				
-				$( ".strip_6_product2 .color_options ul.choices li" ).click(function() {
-					 $( ".strip_6_product2 .color_options .inputColor" ).val($( this ).text());
-					 $( ".strip_6_product2 .color_options ul.choices" ).hide();
-				});
-				
-					
+				offer = 2;	
 			}
+
+			
 			
 			
 			
 			/* OFFER 3*/
-
 			if($( this ).hasClass( "offer3" ) && $( this ).hasClass( "addToCart" )){
-				chosen =  $( ".strip_6_product3 .color_options .inputColor" ).val();
-				
-				if(chosen == 'COLOUR'){
-					$( ".strip_6_product3 .color_options .placeholders").css('border','2px solid #971602');
-					$( ".strip_6_product3 .error_msg").text('PLEASE SELECT COLOUR').css('color','#971602');
-				}
-				else{
-					$( ".strip_6_product3 .color_options .placeholders").css('border','0');
-					$( ".strip_6_product3 .error_msg").text('');
-				}
+				offer = 3;
+				checkError(offer);
 			}
-			
-		
 			if($( this ).hasClass( "offer3" ) && !$( this ).hasClass( "addToCart" )){
-				$( this ).text('ADD TO CART');
-				$( this ).css('background', '#3d596e');
-				$( this ).css('color', '#fff');
-				$( this ).addClass('addToCart');
-				
-				chosen =  $( ".strip_6_product3 .color_options .inputColor" ).val();
-
-				$( '.strip_6_product3' ).css('background', '#c9baa7');
-				$( ".strip_6_product3 .color_options" ).show();
-				$( ".strip_6_product3 .color_options .placeholders" ).click(function() {
-					$( ".strip_6_product3 .color_options ul.choices" ).slideToggle( "slow", function() {});
-				});
-				
-				$( ".strip_6_product3 .color_options ul.choices li" ).click(function() {
-					 $( ".strip_6_product3 .color_options .inputColor" ).val($( this ).text());
-					 $( ".strip_6_product3 .color_options ul.choices" ).hide();
-				});
-				
-					
+				offer = 3;
 			}
 			
+			
+			
+			closeOtherOffer(offer);
+			selectedOffer(offer);
 			
 			
 			
