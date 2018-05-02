@@ -32,6 +32,22 @@ $(document).ready(function(){
 	});
 
 	
+	/* pricing swiper*/
+	$('.pricing').slick({
+		infinite: true,
+		slidesToShow: 3,
+		arrows: true,
+		autoplaySpeed: 3000,
+		autoplay: true,
+		responsive: [
+					{
+					  breakpoint: 768,
+					  settings: { slidesToShow: 1, arrows: true}
+					}
+				  ]
+	});
+	
+	
 	/*COLOR SHADES CAROUSEL*/
 	$('.as_seen_on').slick({
 		infinite: true,
