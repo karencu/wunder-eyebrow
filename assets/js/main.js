@@ -233,29 +233,57 @@ $(document).ready(function(){
 		
 		
 		//Close and Reset Other offers that are not currently selected
-		function closeOtherOffer(offer){
+		function closeOtherOffer(offer,bar_menu){
 			
 			var num1 = 0;
 			var num2 = 0;
+			var screensize = 1199.98;
 			
+			var screenWidth = $( window ).width();
+
+			if(screenWidth >= screensize){
+			$( '.strip_6_product1 .add_to_cart' ).css('margin-top', '1em');
+			$( '.strip_6_product2 .add_to_cart' ).css('margin-top', '1em');
+			$( '.strip_6_product3 .add_to_cart' ).css('margin-top', '1em');
+			}
 			
 			if(offer == 1){
 				num1= 2;
 				num2 = 3;
-				$( '.strip_6_product2' ).css('background', '#9babb9');
-				$( '.strip_6_product3' ).css('background', '#7994a8');
+				$( '.strip_6_product'+num1+', .strip_6_product'+num2+'' ).css('color', '#fff');
+				$( '.strip_6_product2' ).css('background', '#596a77');
+				$( '.strip_6_product3' ).css('background', '#304555');
+				if(screenWidth >= screensize){
+					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '1em');
+					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '1em');
+					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '1em');
+				}
+				
 			}
+
 			if(offer == 2){
 				num1= 1;
 				num2 = 3;
-				$( '.strip_6_product1' ).css('background', '#e3e9ec');
-				$( '.strip_6_product3' ).css('background', '#7994a8');
+				$( '.strip_6_product'+num1+', .strip_6_product'+num2+'' ).css('color', '#fff');
+				$( '.strip_6_product1' ).css('background', '#838f99');
+				$( '.strip_6_product3' ).css('background', '#304555');
+				if(screenWidth >= screensize){
+					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '1em');
+					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '1em');
+					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '1em');
+				}
 			}
 			if(offer == 3){
 				num1= 1;
 				num2 = 2;
-				$( '.strip_6_product1' ).css('background', '#e3e9ec');
-				$( '.strip_6_product2' ).css('background', '#9babb9');
+				$( '.strip_6_product'+num1+', .strip_6_product'+num2+'' ).css('color', '#fff');
+				$( '.strip_6_product1' ).css('background', '#838f99');
+				$( '.strip_6_product2' ).css('background', '#596a77');
+				if(screenWidth >= screensize){
+					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '3em');
+					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '3em');
+					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '3em');
+				}
 			}
 
 				//slideUp the dropdown color options
@@ -266,13 +294,18 @@ $(document).ready(function(){
 				$('.strip_6_product'+num1+' .color_options input[name="COLOUR"], .strip_6_product'+num2+' .color_options input[name="COLOUR"]').attr('value','COLOUR');
 				
 				
-				$( '.offer'+num1+', .offer'+num2+'' ).text('CHOOSE OFFER');
-				$( '.offer'+num1+', .offer'+num2+'' ).css('background', '#fff');
-				$( '.offer'+num1+', .offer'+num2+'' ).css('color', '#30221f');
-				$( '.offer'+num1+', .offer'+num2+'' ).removeClass('addToCart');
+					
+				
+				
+				
+				$( '.strip_6_product .offer'+num1+',.strip_6_product .offer'+num2+'' ).text('CHOOSE OFFER');
+				$( '.strip_6_product .offer'+num1+',.strip_6_product .offer'+num2+'' ).css('background', '#fff');
+				$( '.strip_6_product .offer'+num1+',.strip_6_product .offer'+num2+'' ).css('color', '#30221f');
+				$( '.strip_6_product .offer'+num1+',.strip_6_product .offer'+num2+'' ).removeClass('addToCart');
 				$( '.strip_6_product'+num1+' .color_options, .strip_6_product'+num2+' .color_options' ).hide();
 				$( '.strip_6_product'+num1+' .color_options .placeholders, .strip_6_product'+num2+' .color_options .placeholders').css('border','0');
 				$( '.strip_6_product'+num1+' .error_msg, .strip_6_product'+num2+' .error_msg').text('');
+			
 				
 		}
 		
@@ -280,16 +313,21 @@ $(document).ready(function(){
 		//Update the currently selected form..change button to add to cart, display color shade option, add dropdown functio to color shade options
 		//set the currently selected color shade to hidden input field
 		
-		function selectedOffer(offer){
+		function selectedOffer(offer,bar_menu){
 			
-				$( '.offer'+offer+'' ).text('ADD TO CART');
-				$( '.offer'+offer+'' ).css('background', '#3d596e');
-				$( '.offer'+offer+'' ).css('color', '#fff');
-				$( '.offer'+offer+'' ).addClass('addToCart');
+			
+				$( '.strip_6_product .offer'+offer+'' ).text('ADD TO CART');
+				$( '.strip_6_product .offer'+offer+'' ).css('background', '#304555');
+				$( '.strip_6_product .offer'+offer+'' ).css('color', '#fff');
+				$( '.strip_6_product .offer'+offer+'' ).addClass('addToCart');
+				
+			
+				
 							
 				chosen =  $( '.strip_6_product'+offer+' .color_options .inputColor' ).val();
 
 				$( '.strip_6_product'+offer+'' ).css('background', '#c9baa7');
+				$( '.strip_6_product'+offer+'' ).css('color', '#000');
 				$( '.strip_6_product'+offer+' .color_options' ).show();
 				$( '.strip_6_product'+offer+' .color_options .placeholders' ).click(function() {
 					$( '.strip_6_product'+offer+' .color_options ul.choices' ).slideDown( "slow", function() {});
@@ -334,7 +372,9 @@ $(document).ready(function(){
 			
 			var chosen = 'COLOUR';
 			var offer =0;
-
+			var bar_menu = $( this ).hasClass( "bar_menu" );
+			
+			
 			/* OFFER 1 */
 			if($( this ).hasClass( "offer1" ) && $( this ).hasClass( "addToCart" )){
 				offer = 1;
@@ -342,6 +382,7 @@ $(document).ready(function(){
 			}
 			if($( this ).hasClass( "offer1" ) && !$( this ).hasClass( "addToCart" )){	
 				offer = 1;
+				
 			}	
 			
 			
@@ -371,8 +412,8 @@ $(document).ready(function(){
 			
 			
 			
-			closeOtherOffer(offer);
-			selectedOffer(offer);
+			closeOtherOffer(offer,bar_menu);
+			selectedOffer(offer,bar_menu);
 			
 			
 			
