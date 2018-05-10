@@ -71,7 +71,8 @@ $(document).ready(function(){
 	$(function(){
 	  $("#container1").twentytwenty({
 		no_overlay: true, //Do not show the overlay with before and after
-		move_slider_on_hover: true
+		move_slider_on_hover: true,
+		default_offset_pct: 0.6
 	  });
 	});
 

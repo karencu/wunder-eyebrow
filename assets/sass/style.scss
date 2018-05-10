@@ -187,16 +187,22 @@ body{
 			white-space: pre-line;
 			text-align: center;
 			margin-bottom: 1.5em;
-			line-height: 25px;
+			line-height: 28px;
 			list-style: none;
 		}
 		li::before{
 			color:#6e583d;
-			font-size: 4em;
+			font-size: 3.5em;
 			content: "•";
 			line-height: 0;
-			top: 16px;
+			top: 14px;
 			position: relative;
+		}
+		li:nth-child(odd) {
+			color: #fff;
+		}
+		li:nth-child(even) {
+			color: #dacfc2;
 		}
 	}
 	
@@ -317,6 +323,10 @@ body{
 		.product_discount{
 			font-size:22px;
 			font-family:Montserrat-Medium;
+			text-decoration: line-through;
+			 .bold{
+				 font-family:Montserrat-SemiBold;
+			 }
 		}
 		.product_name{
 			font-size:23px;
@@ -326,6 +336,7 @@ body{
 		}
 		.price{
 			font-size:24px;
+			 font-family:Montserrat-SemiBold;
 			letter-spacing:1px;
 			
 		}

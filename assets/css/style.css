@@ -149,15 +149,19 @@ body {
       white-space: pre-line;
       text-align: center;
       margin-bottom: 1.5em;
-      line-height: 25px;
+      line-height: 28px;
       list-style: none; }
     #wrapper .strip_2 .strip_2_right li::before {
       color: #6e583d;
-      font-size: 4em;
+      font-size: 3.5em;
       content: "•";
       line-height: 0;
-      top: 16px;
+      top: 14px;
       position: relative; }
+    #wrapper .strip_2 .strip_2_right li:nth-child(odd) {
+      color: #fff; }
+    #wrapper .strip_2 .strip_2_right li:nth-child(even) {
+      color: #dacfc2; }
   #wrapper .strip_3 {
     text-align: center;
     background: #223441;
@@ -233,13 +237,17 @@ body {
       font-size: 32px; }
     #wrapper .strip_6 .strip_6_product .product_discount {
       font-size: 22px;
-      font-family: Montserrat-Medium; }
+      font-family: Montserrat-Medium;
+      text-decoration: line-through; }
+      #wrapper .strip_6 .strip_6_product .product_discount .bold {
+        font-family: Montserrat-SemiBold; }
     #wrapper .strip_6 .strip_6_product .product_name {
       font-size: 23px; }
     #wrapper .strip_6 .strip_6_product .free_product {
       font-size: 23px; }
     #wrapper .strip_6 .strip_6_product .price {
       font-size: 24px;
+      font-family: Montserrat-SemiBold;
       letter-spacing: 1px; }
     #wrapper .strip_6 .strip_6_product .add_to_cart {
       cursor: pointer;
