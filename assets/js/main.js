@@ -1,5 +1,14 @@
 $(document).ready(function(){
 	
+	
+/*
+	// site preloader -- also uncomment the div in the header and the css style for #preloader
+	$(window).load(function(){
+		$('#preloader').fadeOut('slow',function(){$(this).remove();});
+	});
+
+*/
+
 	/*COLOR SHADES CAROUSEL*/
 	$('.your-shade').slick({
 		infinite: false,
@@ -269,9 +278,9 @@ $(document).ready(function(){
 				$( '.strip_6_product1' ).css('background', '#838f99');
 				$( '.strip_6_product3' ).css('background', '#304555');
 				if(screenWidth >= screensize){
-					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '1em');
-					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '1em');
-					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '1em');
+					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '3em');
+					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '3em');
+					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '3em');
 				}
 			}
 			if(offer == 3){
@@ -281,9 +290,9 @@ $(document).ready(function(){
 				$( '.strip_6_product1' ).css('background', '#838f99');
 				$( '.strip_6_product2' ).css('background', '#596a77');
 				if(screenWidth >= screensize){
-					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '3em');
-					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '3em');
-					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '3em');
+					$( '.strip_6_product'+offer+' .add_to_cart' ).css('margin-top', '3.5em');
+					$( '.strip_6_product'+num1+' .add_to_cart' ).css('margin-top', '3.5em');
+					$( '.strip_6_product'+num2+' .add_to_cart' ).css('margin-top', '3.5em');
 				}
 			}
 

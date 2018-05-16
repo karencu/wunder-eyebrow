@@ -71,7 +71,10 @@ body{
 }
 
 		
-	
+div#preloader { position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: hidden; background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center; }
+
+
+
 #wrapper{
 	.container{
 		overflow: hidden;
@@ -124,6 +127,7 @@ body{
 		overflow: hidden;
 		width: 100%;
 		height: 480px;
+		background:#333;
 	}
 	.content{
 		text-align:center;
@@ -146,6 +150,19 @@ body{
 			line-height:25px;
 			img{
 				vertical-align:top;
+			}
+			.yotpo-icon{
+				font-size:25px;
+				line-height:25px;
+				color:#fff;
+				font-family: Montserrat-Regular;
+				
+			}
+			.text-m{
+				font-size:25px;
+				line-height:25px;
+				color:#fff !important;
+				font-family: Montserrat-Regular;
 			}
 		}
 		.view_offers_btn{
@@ -191,12 +208,14 @@ body{
 			list-style: none;
 		}
 		li::before{
-			color:#6e583d;
-			font-size: 3.5em;
-			content: "•";
-			line-height: 0;
-			top: 14px;
-			position: relative;
+				color: #6e583d;
+				font-size: 2.2em;
+				content: "•";
+				line-height: 0;
+				top: 6px;
+				position: relative;
+				left: -8px;
+
 		}
 		li:nth-child(odd) {
 			color: #fff;
@@ -323,9 +342,22 @@ body{
 		.product_discount{
 			font-size:22px;
 			font-family:Montserrat-Medium;
-			text-decoration: line-through;
+			
 			 .bold{
+				 position:relative;
 				 font-family:Montserrat-SemiBold;
+				 &:before {
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 50%;
+				right: 0;
+				border-top: 2px solid;
+				border-color: inherit;
+				-webkit-transform: skewY(-10deg);
+				-moz-transform: skewY(-10deg);
+				transform: skewY(-15deg);
+			  }
 			 }
 		}
 		.product_name{
@@ -1583,11 +1615,18 @@ body{
 					padding:0 10px;
 				}
 				.playfair_font{
-					font-size:1rem;
+					font-size:1.5rem;
 					margin-bottom:2em;
 				}
 				.rating{
 					font-size:1rem;
+						.yotpo-icon{
+					font-size:1rem;
+					
+				}
+				.text-m{
+					font-size:1rem;
+				}
 				}
 				.view_offers_btn{
 					font-size:1rem;
@@ -1624,13 +1663,19 @@ body{
 					font-size:1.3rem;
 					line-height:1.3rem;
 				}
+				
 			}
 			
 			
 		}/* STRIP_2*/
 		
 
-		
+	   .strip_3{
+		   
+		   p{
+			   font-size:0.7rem;
+		   }
+	   }
 		
 		.strip_5{
 			.strip_5_right, .strip_5_left{
@@ -1725,7 +1770,7 @@ body{
 @media (max-width: 431px) { 
 
 #wrapper{
-		
+
 		.strip_2{
 			.strip_2_right{
 				.content{
@@ -1736,6 +1781,9 @@ body{
 				ul li{
 					font-size:1rem;
 					line-height:1rem;
+				}
+				li::before{
+					left:-4px;
 				}
 			}
 			 
@@ -1761,7 +1809,7 @@ body{
 			.strip_2_right{
 				height:330px;
 				.content{
-					top: 20%;
+					top: 18%;
 					left: -6%;
 				
 				}
@@ -1771,6 +1819,10 @@ body{
 				ul li{
 					font-size:0.9rem;
 					line-height:0.9rem;
+				}
+				li::before{
+					left: -1px;
+					
 				}
 			}
 			 
@@ -1783,9 +1835,9 @@ body{
 
 			p{
 
-				line-height: 0.9rem;
+				line-height: 0.8rem;
 
-				font-size: 0.8rem;
+				font-size: 0.7rem;
 			}
 		}/* STRIP_3*/
 		
@@ -1800,17 +1852,30 @@ body{
 		}/* STRIP_5*/
 		
 		
-		.strip_9{
-			.strip_9_left{
+			.strip_9{
+				.strip_9_left{
+					height:auto;
+				.pic1{width:40%;}
+				.pic2{width:55%;}
+				.pic3{width:35%;}
+				.pic4{width:50%;}
+				.pic5{width:45%;}
+				
 				.as-seen-box{
+					
+					img{
+					
+				}
 					.playfair_font {
 						font-size:1.5rem;
-						
-						
 					}
 				}
 			}
-		}/*strip_9*/
+			
+		}/* STRIP_9*/
+		
+		
+		
 	}
 }/* Extra small*/
 
